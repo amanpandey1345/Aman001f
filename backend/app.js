@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload())
 app.use(
     cors({
-      origin: "https://aman001f.vercel.app",
+      origin: "*",
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
     })
