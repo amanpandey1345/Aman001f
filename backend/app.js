@@ -13,9 +13,7 @@ app.use(fileUpload())
 app.use(cookieParser())
 app.use(
   cors({
-    origin: "https://aman001f.vercel.app",
     credentials: true,
-
   })
 );
 
