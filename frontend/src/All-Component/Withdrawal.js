@@ -13,7 +13,7 @@ const Withdrawal = ({ history }) => {
   const dispatch = useDispatch();
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
-  const { balance } = useSelector((state) => state.user.user);
+  const { user } = useSelector((state) => state.user);
   const { loading } = useSelector((state) => state.withdrawals); 
   const { isUpdated } = useSelector(
     (state) => state.userbalance
@@ -72,7 +72,7 @@ const Withdrawal = ({ history }) => {
     e.preventDefault();
     const check = WAmount;
     const pm = PaymentMethod
-    if (balance === check) {
+    if (user?.balance === check) {
       alert.error("Sorry , balance low",{
         position:"top-center",
         autoClose:3000,
@@ -84,7 +84,7 @@ const Withdrawal = ({ history }) => {
         pauseOnHover:true,
         theme:"dark"
       });
-    } else if (balance === 0) {
+    } else if (user?.balance === 0) {
       alert.error("Sorry , Please insufficient balance",{
         position:"top-center",
         autoClose:3000,
@@ -96,7 +96,7 @@ const Withdrawal = ({ history }) => {
         pauseOnHover:true,
         theme:"dark"
       });
-    } else if (balance <= check) {
+    } else if (user?.balance <= check) {
       alert.error("Sorry , insufficient balance",{
         position:"top-center",
         autoClose:3000,
@@ -138,7 +138,7 @@ const Withdrawal = ({ history }) => {
       myForm.set("Mobile", Mobile);
       myForm.set("WAmount", WAmount);
       myForm.set("PaymentMethod", PaymentMethod);
-      myBalance.set("balance", balance - check);
+      myBalance.set("balance", user?.balance - check);
       dispatch(createWithdrawal(myForm));
       dispatch(updateBalance(myBalance));
       if (isAuthenticated) {

@@ -33,9 +33,9 @@ function Notification ({history}) {
         history.push("/login");
       }
 
-    return (
+    return (   
         <>
-        <MetaData title={`${user.fname}'s Notification`} />
+        <MetaData title={`${user?.fname}'s Notification`} />
         <div className="mainh">
             <div className="headtag">
                 <h1> Notification's </h1>
