@@ -13,7 +13,7 @@ app.use(fileUpload())
 app.use(cookieParser())
 app.use(
   cors({
-    origin: "https://newly001.onrender.com",
+    origin: "https://aman001f.vercel.app",
     credentials: true,
 
   })
