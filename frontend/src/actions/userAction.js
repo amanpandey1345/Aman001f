@@ -133,9 +133,7 @@ import {
 } from "../constants/userConstants";
 
 import axios from "axios";
-import { server } from "../store";
 
-const baseUrl = "https://newly001.onrender.com"
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -144,7 +142,7 @@ export const login = (email, password) => async (dispatch) => {
     const config = { header: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `${server}/api/v1/login`,
+      `/api/v1/login`,
       { email, password },
       config
     );
@@ -160,7 +158,7 @@ export const register = (userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.post(`${server}/api/v1/register`, userData, config);
+    const { data } = await axios.post(`/api/v1/register`, userData, config);
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({
@@ -174,7 +172,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`${server}/api/v1/me`);
+    const { data } = await axios.get(`/api/v1/me`);
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
@@ -183,7 +181,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`${server}/api/v1/logout`);
+    await axios.get(`/api/v1/logout`);
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
@@ -196,7 +194,7 @@ export const updateProfile = (userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(`${server}/api/v1/`, userData, config);
+    const { data } = await axios.post(`/api/v1/`, userData, config);
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({
@@ -213,7 +211,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `${server}/api/v1/password/update`,
+      `/api/v1/password/update`,
       passwords,
       config
     );
@@ -236,7 +234,7 @@ export const forgotPassword = (email) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(`${server}/api/v1/password/forgot`, email, config);
+    const { data } = await axios.post(`/api/v1/password/forgot`, email, config);
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
   } catch (error) {
@@ -256,7 +254,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `${server}/api/v1/password/reset/${token}`,
+      `/api/v1/password/reset/${token}`,
       passwords,
       config
     );
@@ -284,7 +282,7 @@ export const createBet = (betData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${server}/api/v1/user/bet`,
+      `/api/v1/user/bet`,
       betData,
       config
     );
@@ -310,7 +308,7 @@ export const createDeposit = (betData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${server}/api/v1/user/deposit`,
+      `/api/v1/user/deposit`,
       betData,
       config
     );
@@ -337,7 +335,7 @@ export const createWithdrawal = (betData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${server}/api/v1/user/withdrawal`,
+      `/api/v1/user/withdrawal`,
       betData,
       config
     );
@@ -361,7 +359,7 @@ export const getBetUser =() => async (dispatch) => {
       dispatch({ type: ALL_BET_REQUEST });
 
 
-      const { data } = await axios.get(`${server}/api/v1/mybet`);
+      const { data } = await axios.get(`/api/v1/mybet`);
 
       dispatch({
         type: ALL_BET_SUCCESS,
@@ -382,7 +380,7 @@ export const getDepositUser =() => async (dispatch) => {
     dispatch({ type: ALL_DEPOSIT_REQUEST });
 
 
-    const { data } = await axios.get(`${server}/api/v1/mydeposit`);
+    const { data } = await axios.get(`/api/v1/mydeposit`);
 
     dispatch({
       type: ALL_DEPOSIT_SUCCESS,
@@ -403,7 +401,7 @@ export const getDepositUser =() => async (dispatch) => {
       dispatch({ type: ALL_WITHDRAWAL_REQUEST });
   
   
-      const { data } = await axios.get(`${server}/api/v1/mywithdrawal`);
+      const { data } = await axios.get(`/api/v1/mywithdrawal`);
   
       dispatch({
         type: ALL_WITHDRAWAL_SUCCESS,
@@ -427,7 +425,7 @@ export const updateBalance = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `${server}/api/v1/balance/update`,
+      `/api/v1/balance/update`,
       userData,
       config
     );
@@ -448,7 +446,7 @@ export const updateBalance = (userData) => async (dispatch) => {
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
-    const { data } = await axios.get(`${server}/api/v1/admin/users`);
+    const { data } = await axios.get(`/api/v1/admin/users`);
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
@@ -459,7 +457,7 @@ export const getAllUsers = () => async (dispatch) => {
 export const getAllBets = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_BETS_REQUEST });
-    const { data } = await axios.get(`${server}/api/v1/admin/bets`);
+    const { data } = await axios.get(`/api/v1/admin/bets`);
 
     dispatch({ type: ALL_BETS_SUCCESS, payload: data.bets });
   } catch (error) {
@@ -470,7 +468,7 @@ export const getAllBets = () => async (dispatch) => {
 export const getAllDeposits = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_DEPOSITS_REQUEST });
-    const { data } = await axios.get(`${server}/api/v1/admin/deposits`);
+    const { data } = await axios.get(`/api/v1/admin/deposits`);
 
     dispatch({ type: ALL_DEPOSITS_SUCCESS, payload: data.deposits });
   } catch (error) {
@@ -481,7 +479,7 @@ export const getAllDeposits = () => async (dispatch) => {
 export const getAllWithdrawals = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_WITHDRAWALS_REQUEST });
-    const { data } = await axios.get(`${server}/api/v1/admin/withdrawals`);
+    const { data } = await axios.get(`/api/v1/admin/withdrawals`);
 
     dispatch({ type: ALL_WITHDRAWALS_SUCCESS, payload: data.withdrawals });
   } catch (error) {
@@ -496,7 +494,7 @@ export const AdminUpdateUser1 = (id, userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/admin/user/update/${id}`, userData, config);
+    const { data } = await axios.put(`/api/v1/admin/user/update/${id}`, userData, config);
     dispatch({ type: UPDATE_ADUSER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -513,7 +511,7 @@ export const AdminUpdateWith1 = (id, userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/admin/withdrawals/update/${id}`, userData, config);
+    const { data } = await axios.put(`/api/v1/admin/withdrawals/update/${id}`, userData, config);
     dispatch({ type: UPDATE_WITHDRAWAL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -531,7 +529,7 @@ export const AdminUpdateDeposit1 = (id, userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/admin/deposits/update/${id}`, userData, config);
+    const { data } = await axios.put(`/api/v1/admin/deposits/update/${id}`, userData, config);
     dispatch({ type: UPDATE_DEPOSIT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -547,7 +545,7 @@ export const AdminUpdateShowTime = (userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/admin/showtime/update`, userData, config);
+    const { data } = await axios.put(`/api/v1/admin/showtime/update`, userData, config);
     dispatch({ type: UPDATE_SHOWTIME_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -564,7 +562,7 @@ export const AdminUpdateWinset = (userData) => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/admin/winset/update`, userData, config);
+    const { data } = await axios.put(`/api/v1/admin/winset/update`, userData, config);
     dispatch({ type: UPDATE_WINSET_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -577,7 +575,7 @@ export const AdminUpdateWinset = (userData) => async (dispatch) => {
 export const getShowtime = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_SHOWTIME_REQUEST });
-    const { data } = await axios.get(`${server}/api/v1/admin/getshowtime`);
+    const { data } = await axios.get(`/api/v1/admin/getshowtime`);
 
     dispatch({ type: ALL_SHOWTIME_SUCCESS, payload: data });
   } catch (error) {
@@ -591,7 +589,7 @@ export const AdminUpdateBetDone = () => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/admin/bet/done`,  config);
+    const { data } = await axios.put(`/api/v1/admin/bet/done`,  config);
     dispatch({ type: ALL_BETDONE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -608,7 +606,7 @@ export const UpdateNotifi = () => async (dispatch) => {
 
     const config = { header: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`${server}/api/v1/me/notifi`,  config);
+    const { data } = await axios.put(`/api/v1/me/notifi`,  config);
     dispatch({ type: ALL_NOTIFICATION_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -628,7 +626,7 @@ export const createSay = (sayData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${server}/api/v1/user/say`,
+      `/api/v1/user/say`,
       sayData,
       config
     );
@@ -655,7 +653,7 @@ export const createShowhistory = (sayData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${server}/api/v1/admin/showhistory`,
+      `/api/v1/admin/showhistory`,
       sayData,
       config
     );
@@ -679,7 +677,7 @@ export const getAllShowHistory =() => async (dispatch) => {
     dispatch({ type: GET_SHOWHISTORY_REQUEST });
 
 
-    const { data } = await axios.get(`${server}/api/v1/user/showhistory`);
+    const { data } = await axios.get(`/api/v1/user/showhistory`);
 
     dispatch({
       type: GET_SHOWHISTORY_SUCCESS,
