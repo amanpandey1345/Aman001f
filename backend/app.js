@@ -13,7 +13,7 @@ app.use(fileUpload())
 app.use(cookieParser())
 app.use(
   cors({
-    origin: "*",
+    origin: "https://newly001.onrender.com",
     credentials: true,
 
   })
