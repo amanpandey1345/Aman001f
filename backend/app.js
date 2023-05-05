@@ -12,11 +12,13 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload())
 app.use(
-    cors({
-      origin: "*",
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
-    })
-  );
 
 
 // Route Import
