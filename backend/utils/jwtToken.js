@@ -8,6 +8,7 @@ const sendToken = (user, statusCode, res)=>{
         ),
         httpOnly: true,
         secure: true,
+        sameSite: "none",
 
 
 
