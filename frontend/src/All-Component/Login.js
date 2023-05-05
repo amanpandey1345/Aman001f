@@ -80,7 +80,7 @@ function Login ({history}) {
     return (
    
         <>
-        {loading ? <Loader/> :<>
+       
         <MetaData title="Login" /> 
         <div className={styles.Sign_Up}> 
         <form  onSubmit={loginSubmit} >
@@ -109,7 +109,7 @@ function Login ({history}) {
            </p>
           </form>
 
-        </div></>}
+        </div>
         <ToastContainer
             position="top-center"
             autoClose={3000}
