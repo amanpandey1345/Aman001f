@@ -71,3 +71,5 @@ const store = createStore(
 );
 
 export default store;
+
+export const server = 'https://newly001.onrender.com';
