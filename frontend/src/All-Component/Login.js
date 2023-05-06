@@ -39,6 +39,35 @@ function Login ({history}) {
   useEffect(() => {
     window.scrollTo({top:0,behavior:'smooth'});
     if(error){
+      dispatch(clearErrors());
+    }
+    if(isAuthenticated){
+      history.push("/dashboard");
+     
+    }
+    
+  }, [dispatch, error, alert, history, isAuthenticated]) 
+  
+
+
+  const loginSubmit=(e)=>{
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword));
+    if(isAuthenticated){
+      alert.success("login successfully..." ,{
+        position:"top-center",
+        autoClose:3000,
+        hideProgressBar:false,
+        newestOnTop:false,
+        closeOnClick:true,
+        rtl:false,
+        draggable:true,
+        pauseOnHover:true,
+        theme:"dark"
+      });
+     
+    }
+    if(error){
       alert.error(error,{
         position:"top-center",
         autoClose:3000,
@@ -52,28 +81,6 @@ function Login ({history}) {
       });
       dispatch(clearErrors());
     }
-    if(isAuthenticated){
-      history.push("/dashboard");
-      alert.success("login successfully..." ,{
-        position:"top-center",
-        autoClose:3000,
-        hideProgressBar:false,
-        newestOnTop:false,
-        closeOnClick:true,
-        rtl:false,
-        draggable:true,
-        pauseOnHover:true,
-        theme:"dark"
-      });
-    }
-    
-  }, [dispatch, error, alert, history, isAuthenticated]) 
-  
-
-
-  const loginSubmit=(e)=>{
-    e.preventDefault();
-    dispatch(login(loginEmail, loginPassword));
   }
   
 

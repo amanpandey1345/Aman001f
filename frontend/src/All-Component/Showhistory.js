@@ -20,19 +20,24 @@ const Showhistory = ({ history }) => {
     store.dispatch(getAllShowHistory());
     if (isAuthenticated === false) {
       history.push("/login");
-      alert.error("login to access...",{
-        position:"top-center",
-        autoClose:3000,
-        hideProgressBar:false,
-        newestOnTop:false,
-        closeOnClick:true,
-        rtl:false,
-        draggable:true,
-        pauseOnHover:true,
-        theme:"dark"
-      });
+     
     }
   }, [alert, history, isAuthenticated]);
+
+  if (isAuthenticated === false) {
+    history.push("/login");
+    alert.error("login to access...",{
+      position:"top-center",
+      autoClose:3000,
+      hideProgressBar:false,
+      newestOnTop:false,
+      closeOnClick:true,
+      rtl:false,
+      draggable:true,
+      pauseOnHover:true,
+      theme:"dark"
+    });
+  }
 //   const mbike =
 //   "https://res.cloudinary.com/dfzlvdrcn/image/upload/v1657812770/M%20pic/MobileBike_ihnomw.jpg";
 // const cImage =

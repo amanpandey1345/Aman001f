@@ -60,32 +60,12 @@ function Sigh_Up({history}) {
       window.scrollTo({top:0,behavior:'smooth'});
 
         if(error){
-          alert.error(error,{
-            position:"top-center",
-            autoClose:3000,
-            hideProgressBar:false,
-            newestOnTop:false,
-            closeOnClick:true,
-            rtl:false,
-            draggable:true,
-            pauseOnHover:true,
-            theme:"dark"
-          });
+
           dispatch(clearErrors());
         }
         if(isAuthenticated){
           history.push("/Dashboard");
-          alert.success("login successfully...",{
-            position:"top-center",
-            autoClose:3000,
-            hideProgressBar:false,
-            newestOnTop:false,
-            closeOnClick:true,
-            rtl:false,
-            draggable:true,
-            pauseOnHover:true,
-            theme:"dark"
-          });
+         
         }
         
       }, [dispatch, error, alert, history, isAuthenticated]) 
@@ -114,6 +94,35 @@ function Sigh_Up({history}) {
         myForm.set("referCode",referCode);
         // console.log(myForm);
         dispatch(register(myForm));
+      }
+
+      if(error){
+        alert.error(error,{
+          position:"top-center",
+          autoClose:3000,
+          hideProgressBar:false,
+          newestOnTop:false,
+          closeOnClick:true,
+          rtl:false,
+          draggable:true,
+          pauseOnHover:true,
+          theme:"dark"
+        });
+        dispatch(clearErrors());
+      }
+      if(isAuthenticated){
+        history.push("/Dashboard");
+        alert.success("login successfully...",{
+          position:"top-center",
+          autoClose:3000,
+          hideProgressBar:false,
+          newestOnTop:false,
+          closeOnClick:true,
+          rtl:false,
+          draggable:true,
+          pauseOnHover:true,
+          theme:"dark"
+        });
       }
     }
 
