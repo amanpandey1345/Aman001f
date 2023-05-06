@@ -89,50 +89,50 @@ function Login ({history}) {
 
     return (
    
-        <>
-       
-        <MetaData title="Login" /> 
-        <div className={styles.Sign_Up}> 
-        <form  onSubmit={loginSubmit} >
-            <h3> Login </h3> 
-            
-            <label for="Email"> Email <span className={styles.Star}> *  </span> </label> <br/>          
-              <input class="input-field" type="email" placeholder="Email" title="Enter Your Email" name="Email"  required  value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} /> <br/>
-            
-            
-            <label for="Password"> Password <span className={styles.Star}> *  </span> </label> <br/>
-            <input class="input-field" type={type} placeholder="Password" title="Upper case, Lower case, Special character and Numeric letter minimum 6 Character are required in Password Filed" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$" name="Password" required value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}  />
-            <span className={styles.icon121} onClick={handleToggle}>{icon}</span>
-            
-              <br/>
-           {/* <span>  <input type="checkbox" /> Show Password <br/> </span> */}
+      <>
+      {loading ? <Loader/> :<>
+      <MetaData title="Login" /> 
+      <div className={styles.Sign_Up}> 
+      <form  onSubmit={loginSubmit} >
+          <h3> Login </h3> 
+          
+          <label for="Email"> Email <span className={styles.Star}> *  </span> </label> <br/>          
+            <input class="input-field" type="email" placeholder="Email" title="Enter Your Email" name="Email"  required  value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} /> <br/>
+          
+          
+          <label for="Password"> Password <span className={styles.Star}> *  </span> </label> <br/>
+          <input class="input-field" type={type} placeholder="Password" title="Upper case, Lower case, Special character and Numeric letter minimum 6 Character are required in Password Filed" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$" name="Password" required value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}  />
+          <span className={styles.icon121} onClick={handleToggle}>{icon}</span>
+          
+            <br/>
+         {/* <span>  <input type="checkbox" /> Show Password <br/> </span> */}
 
-           <p className={styles.btn}>
-           <Link to="/password/forgot"><button type="button" className={styles.btnlogin}>  Forgot Password  </button></Link>
-           <button type="submit" name="Register" value="Login" > Login </button> 
-           </p>
-                    
-           <center>  <p className={styles.Link}> Don't have an account? <Link to="/Sign_Up"> Create Account </Link> </p> </center>
+         <p className={styles.btn}>
+         <Link to="/password/forgot"><button type="button" className={styles.btnlogin}>  Forgot Password  </button></Link>
+         <button type="submit" name="Register" value="Login" > Login </button> 
+         </p>
+                  
+         <center>  <p className={styles.Link}> Don't have an account? <Link to="/Sign_Up"> Create Account </Link> </p> </center>
 
-           <p className={styles.help}> 
-            Need Help? Live Chat Support 24/7
-           </p>
-          </form>
+         <p className={styles.help}> 
+          Need Help? Live Chat Support 24/7
+         </p>
+        </form>
 
-        </div>
-        <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
-        </>
+      </div></>}
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </>
    
         
         
