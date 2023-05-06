@@ -116,7 +116,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: `Vishnu Project Password Recovery`,
+      subject: `RCGames11 Password Recovery`,
       message,
     });
     res.status(200).json({
