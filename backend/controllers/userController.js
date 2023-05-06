@@ -11,16 +11,20 @@ const crypto = require("crypto");
 // Create User
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  const { fname, email, mobile, password, referCode } = req.body;
 
-  const { fname, email, mobile, password ,referCode } = req.body;
-
-
-    const user = await User.create({ fname, email, mobile, password , referCode ,propic:{
-      url:"url",
-      public_id:"public id"
-    }});
+  const user = await User.create({
+    fname,
+    email,
+    mobile,
+    password,
+    referCode,
+    propic: {
+      url: "url",
+      public_id: "public id",
+    },
+  });
   // const user = new User({ fname, email, mobile, password });
-
 
   sendToken(user, 201, res);
 });
@@ -50,15 +54,19 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 // logout User
 
 exports.logoutUser = catchAsyncErrors(async (req, res, next) => {
-  res.cookie("token", null, {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  });
-
-  res.status(200).json({
-    success: true,
-    message: "Logged Out",
-  });
+  res
+    .status(200)
+    .cookie("token", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
+    .json({
+      success: true,
+      message: "Logged Out",
+    });
 });
 
 // Get all User User
@@ -185,7 +193,6 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-
 // update User password
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
@@ -210,21 +217,18 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 // update balance
 
 exports.updateBalance = catchAsyncErrors(async (req, res, next) => {
-
-
   let users = await User.findById(req.user.id);
 
   if (!users) {
     return next(new ErrorHander("user not found", 404));
   }
 
-
   users = await User.findByIdAndUpdate(req.user.id, req.body, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
-  await users.save()
+  await users.save();
 
   res.status(200).json({
     success: true,
@@ -232,37 +236,25 @@ exports.updateBalance = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-
-
-
-
-
 // update User Profile
 exports.AdminUpdateProfile = catchAsyncErrors(async (req, res, next) => {
-
   let user = await User.findById(req.params.id);
 
+  if (!user) {
+    return next(new ErrorHander("notifi user not found", 404));
+  }
 
-    if (!user) {
-      return next(new ErrorHander("notifi user not found", 404));
-    }
-
-    user = await User.findByIdAndUpdate(req.params.id,req.body ,{
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    });
-
-
-
+  user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
 
   res.status(200).json({
     success: true,
     user,
   });
-
-
-})
+});
 
 // update User password
 exports.pop_natifications = catchAsyncErrors(async (req, res, next) => {
@@ -279,8 +271,6 @@ exports.pop_natifications = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    notificationslen
+    notificationslen,
   });
 });
-
-

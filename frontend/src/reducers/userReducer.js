@@ -15,123 +15,93 @@ import {
   // UPDATE_PROFILE_SUCCESS,
   // UPDATE_PROFILE_RESET,
   // UPDATE_PROFILE_FAIL,
-
   ALL_USERS_REQUEST,
   ALL_USERS_SUCCESS,
   ALL_USERS_FAIL,
-
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_FAIL,
-
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
-
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
-
   CREATE_BET_REQUEST,
   CREATE_BET_SUCCESS,
   CREATE_BET_FAIL,
-
   UPDATE_BALANCE_REQUEST,
   UPDATE_BALANCE_SUCCESS,
   UPDATE_BALANCE_RESET,
   UPDATE_BALANCE_FAIL,
-
   CREATE_DEPOSIT_REQUEST,
   CREATE_DEPOSIT_SUCCESS,
   CREATE_DEPOSIT_FAIL,
-
   ALL_BET_REQUEST,
   ALL_BET_SUCCESS,
-  ALL_BET_FAIL, 
-
+  ALL_BET_FAIL,
   ALL_BETS_REQUEST,
   ALL_BETS_SUCCESS,
-  ALL_BETS_FAIL, 
-
+  ALL_BETS_FAIL,
   CREATE_WITHDRAWAL_REQUEST,
   CREATE_WITHDRAWAL_SUCCESS,
   CREATE_WITHDRAWAL_FAIL,
-
   ALL_DEPOSIT_REQUEST,
   ALL_DEPOSIT_SUCCESS,
   ALL_DEPOSIT_FAIL,
-
   ALL_WITHDRAWAL_REQUEST,
   ALL_WITHDRAWAL_SUCCESS,
   ALL_WITHDRAWAL_FAIL,
-
   ALL_DEPOSITS_REQUEST,
   ALL_DEPOSITS_SUCCESS,
   ALL_DEPOSITS_FAIL,
- 
   ALL_WITHDRAWALS_REQUEST,
   ALL_WITHDRAWALS_SUCCESS,
   ALL_WITHDRAWALS_FAIL,
-
-
   ALL_NOTIFICATION_REQUEST,
   ALL_NOTIFICATION_SUCCESS,
   ALL_NOTIFICATION_FAIL,
   ALL_NOTIFICATION_RESET,
-
   UPDATE_DEPOSIT_REQUEST,
   UPDATE_DEPOSIT_SUCCESS,
   UPDATE_DEPOSIT_FAIL,
   UPDATE_DEPOSIT_RESET,
-
   UPDATE_WITHDRAWAL_REQUEST,
   UPDATE_WITHDRAWAL_SUCCESS,
   UPDATE_WITHDRAWAL_FAIL,
   UPDATE_WITHDRAWAL_RESET,
-
   UPDATE_ADUSER_REQUEST,
   UPDATE_ADUSER_SUCCESS,
   UPDATE_ADUSER_FAIL,
   UPDATE_ADUSER_RESET,
-
   UPDATE_SHOWTIME_REQUEST,
   UPDATE_SHOWTIME_SUCCESS,
   UPDATE_SHOWTIME_FAIL,
   UPDATE_SHOWTIME_RESET,
-
-
   UPDATE_WINSET_REQUEST,
   UPDATE_WINSET_SUCCESS,
   UPDATE_WINSET_FAIL,
   UPDATE_WINSET_RESET,
-
   ALL_SHOWTIME_REQUEST,
   ALL_SHOWTIME_SUCCESS,
   ALL_SHOWTIME_FAIL,
-
   ALL_BETDONE_REQUEST,
   ALL_BETDONE_SUCCESS,
   ALL_BETDONE_FAIL,
   ALL_BETDONE_RESET,
-
   CREATE_SHOWHISTORY_REQUEST,
   CREATE_SHOWHISTORY_SUCCESS,
   CREATE_SHOWHISTORY_FAIL,
-
   CREATE_SAY_REQUEST,
   CREATE_SAY_SUCCESS,
   CREATE_SAY_FAIL,
-
   GET_SAY_REQUEST,
   GET_SAY_SUCCESS,
   GET_SAY_FAIL,
-
   GET_SHOWHISTORY_FAIL,
   GET_SHOWHISTORY_SUCCESS,
   GET_SHOWHISTORY_REQUEST,
-
-
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
@@ -171,7 +141,7 @@ export const userReducer = (state = { user: {} }, action) => {
       };
     case LOGOUT_SUCCESS:
       return {
-        loading: true,
+        loading: false,
         isAuthenticated: false,
         user: null,
       };
@@ -179,7 +149,7 @@ export const userReducer = (state = { user: {} }, action) => {
       return {
         ...state,
         loading: false,
-        error:action.payload,
+        error: action.payload,
       };
     case CLEAR_ERRORS:
       return {
@@ -194,7 +164,6 @@ export const userReducer = (state = { user: {} }, action) => {
 
 export const profileReducer = (state = {}, action) => {
   switch (action.type) {
-
     case UPDATE_PASSWORD_REQUEST:
       return {
         ...state,
@@ -208,8 +177,6 @@ export const profileReducer = (state = {}, action) => {
         isUpdated: action.payload,
       };
 
-
-
     case UPDATE_PASSWORD_FAIL:
       return {
         ...state,
@@ -217,15 +184,11 @@ export const profileReducer = (state = {}, action) => {
         error: action.payload,
       };
 
-
     case UPDATE_PASSWORD_RESET:
-
       return {
         ...state,
         isUpdated: false,
       };
-
-
 
     case CLEAR_ERRORS:
       return {
@@ -280,22 +243,18 @@ export const forgotPasswordReducer = (state = {}, action) => {
   }
 };
 
-
 export const betReducer = (state = { bet: [] }, action) => {
   switch (action.type) {
     case CREATE_BET_REQUEST:
-
       return {
         loading: true,
         bets: [],
       };
     case CREATE_BET_SUCCESS:
-
       return {
         loading: false,
         bet: action.payload,
       };
-
 
     case CREATE_BET_FAIL:
       return {
@@ -313,11 +272,9 @@ export const betReducer = (state = { bet: [] }, action) => {
   }
 };
 
-
 export const getbetReducer = (state = { getbet: [] }, action) => {
   switch (action.type) {
     case ALL_BET_REQUEST:
-
       return {
         loading: true,
         getbet: [],
@@ -344,7 +301,6 @@ export const getbetReducer = (state = { getbet: [] }, action) => {
   }
 };
 
-
 export const userBalanceReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_BALANCE_REQUEST:
@@ -353,13 +309,11 @@ export const userBalanceReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case UPDATE_BALANCE_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case UPDATE_BALANCE_FAIL:
@@ -367,7 +321,6 @@ export const userBalanceReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case UPDATE_BALANCE_RESET:
@@ -385,23 +338,18 @@ export const userBalanceReducer = (state = {}, action) => {
   }
 };
 
-
 export const depositReducer = (state = { deposit: [] }, action) => {
   switch (action.type) {
-    case CREATE_DEPOSIT_REQUEST
-    :
-
+    case CREATE_DEPOSIT_REQUEST:
       return {
         loading: true,
         deposit: [],
       };
     case CREATE_DEPOSIT_SUCCESS:
-
       return {
         loading: false,
         deposit: action.payload,
       };
-
 
     case CREATE_DEPOSIT_FAIL:
       return {
@@ -422,18 +370,15 @@ export const depositReducer = (state = { deposit: [] }, action) => {
 export const withdrawalReducer = (state = { withdrawal: [] }, action) => {
   switch (action.type) {
     case CREATE_WITHDRAWAL_REQUEST:
-
       return {
         loading: true,
         withdrawal: [],
       };
     case CREATE_WITHDRAWAL_SUCCESS:
-
       return {
         loading: false,
         withdrawal: action.payload,
       };
-
 
     case CREATE_WITHDRAWAL_FAIL:
       return {
@@ -454,7 +399,6 @@ export const withdrawalReducer = (state = { withdrawal: [] }, action) => {
 export const getdepositReducer = (state = { getdeposit: [] }, action) => {
   switch (action.type) {
     case ALL_DEPOSIT_REQUEST:
-
       return {
         Dloading: true,
         getdeposit: [],
@@ -481,11 +425,9 @@ export const getdepositReducer = (state = { getdeposit: [] }, action) => {
   }
 };
 
-
 export const getwithdrawalReducer = (state = { getwithdrawal: [] }, action) => {
   switch (action.type) {
     case ALL_WITHDRAWAL_REQUEST:
-
       return {
         Wloading: true,
         getwithdrawal: [],
@@ -511,7 +453,6 @@ export const getwithdrawalReducer = (state = { getwithdrawal: [] }, action) => {
       return state;
   }
 };
-
 
 export const allUsersReducer = (state = { users: [] }, action) => {
   switch (action.type) {
@@ -545,7 +486,6 @@ export const allUsersReducer = (state = { users: [] }, action) => {
   }
 };
 
-
 export const allBetsReducer = (state = { bets: [] }, action) => {
   switch (action.type) {
     case ALL_BETS_REQUEST:
@@ -578,7 +518,6 @@ export const allBetsReducer = (state = { bets: [] }, action) => {
   }
 };
 
-
 export const allWithdrawalsReducer = (state = { withdrawals: [] }, action) => {
   switch (action.type) {
     case ALL_WITHDRAWALS_REQUEST:
@@ -610,7 +549,6 @@ export const allWithdrawalsReducer = (state = { withdrawals: [] }, action) => {
       return state;
   }
 };
-
 
 export const allDepositsReducer = (state = { deposits: [] }, action) => {
   switch (action.type) {
@@ -652,13 +590,11 @@ export const AdminUpdateWithdrawalReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case UPDATE_WITHDRAWAL_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case UPDATE_WITHDRAWAL_FAIL:
@@ -666,7 +602,6 @@ export const AdminUpdateWithdrawalReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case UPDATE_WITHDRAWAL_RESET:
@@ -684,7 +619,6 @@ export const AdminUpdateWithdrawalReducer = (state = {}, action) => {
   }
 };
 
-
 export const AdminUpdateDepositReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_DEPOSIT_REQUEST:
@@ -693,13 +627,11 @@ export const AdminUpdateDepositReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case UPDATE_DEPOSIT_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case UPDATE_DEPOSIT_FAIL:
@@ -707,7 +639,6 @@ export const AdminUpdateDepositReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case UPDATE_DEPOSIT_RESET:
@@ -725,7 +656,6 @@ export const AdminUpdateDepositReducer = (state = {}, action) => {
   }
 };
 
-
 export const AdminUpdateUserReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_ADUSER_REQUEST:
@@ -734,13 +664,11 @@ export const AdminUpdateUserReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case UPDATE_ADUSER_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case UPDATE_ADUSER_FAIL:
@@ -748,7 +676,6 @@ export const AdminUpdateUserReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case UPDATE_ADUSER_RESET:
@@ -766,7 +693,6 @@ export const AdminUpdateUserReducer = (state = {}, action) => {
   }
 };
 
-
 export const UpdateNotifiReducer = (state = {}, action) => {
   switch (action.type) {
     case ALL_NOTIFICATION_REQUEST:
@@ -775,13 +701,11 @@ export const UpdateNotifiReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case ALL_NOTIFICATION_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case ALL_NOTIFICATION_FAIL:
@@ -789,7 +713,6 @@ export const UpdateNotifiReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case ALL_NOTIFICATION_RESET:
@@ -807,7 +730,6 @@ export const UpdateNotifiReducer = (state = {}, action) => {
   }
 };
 
-
 export const AdminUpdateShowTimeReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_SHOWTIME_REQUEST:
@@ -816,13 +738,11 @@ export const AdminUpdateShowTimeReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case UPDATE_SHOWTIME_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case UPDATE_SHOWTIME_FAIL:
@@ -830,7 +750,6 @@ export const AdminUpdateShowTimeReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case UPDATE_SHOWTIME_RESET:
@@ -848,8 +767,6 @@ export const AdminUpdateShowTimeReducer = (state = {}, action) => {
   }
 };
 
-
-
 export const AdminUpdateWinsetReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_WINSET_REQUEST:
@@ -858,13 +775,11 @@ export const AdminUpdateWinsetReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case UPDATE_WINSET_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
-
       };
 
     case UPDATE_WINSET_FAIL:
@@ -872,7 +787,6 @@ export const AdminUpdateWinsetReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case UPDATE_WINSET_RESET:
@@ -889,7 +803,6 @@ export const AdminUpdateWinsetReducer = (state = {}, action) => {
       return state;
   }
 };
-
 
 export const GetShowTimeReducer = (state = { showtime: [] }, action) => {
   switch (action.type) {
@@ -931,13 +844,11 @@ export const AdminUpdateBetReducer = (state = {}, action) => {
         loading: true,
       };
 
-
     case ALL_BETDONE_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated1: action.payload,
-
       };
 
     case ALL_BETDONE_FAIL:
@@ -945,7 +856,6 @@ export const AdminUpdateBetReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload,
-
       };
 
     case ALL_BETDONE_RESET:
@@ -963,23 +873,21 @@ export const AdminUpdateBetReducer = (state = {}, action) => {
   }
 };
 
-
-export const AdminShowhistoryReducer = (state = { showhistory: [] }, action) => {
+export const AdminShowhistoryReducer = (
+  state = { showhistory: [] },
+  action
+) => {
   switch (action.type) {
-    case CREATE_SHOWHISTORY_REQUEST
-    :
-
+    case CREATE_SHOWHISTORY_REQUEST:
       return {
         loading: true,
         showhistory: [],
       };
     case CREATE_SHOWHISTORY_SUCCESS:
-
       return {
         loading: false,
         showhistory: action.payload,
       };
-
 
     case CREATE_SHOWHISTORY_FAIL:
       return {
@@ -997,23 +905,18 @@ export const AdminShowhistoryReducer = (state = { showhistory: [] }, action) => 
   }
 };
 
-
 export const AdminSayReducer = (state = { say: [] }, action) => {
   switch (action.type) {
-    case CREATE_SAY_REQUEST
-    :
-
+    case CREATE_SAY_REQUEST:
       return {
         loading: true,
         say: [],
       };
     case CREATE_SAY_SUCCESS:
-
       return {
         loading: false,
         showhistory: action.payload,
       };
-
 
     case CREATE_SAY_FAIL:
       return {
@@ -1034,7 +937,6 @@ export const AdminSayReducer = (state = { say: [] }, action) => {
 export const getShowhistoryReducer = (state = { showhistory: [] }, action) => {
   switch (action.type) {
     case GET_SHOWHISTORY_REQUEST:
-
       return {
         loading: true,
         showhistory: [],
@@ -1061,11 +963,9 @@ export const getShowhistoryReducer = (state = { showhistory: [] }, action) => {
   }
 };
 
-
 export const getSayReducer = (state = { say: [] }, action) => {
   switch (action.type) {
     case GET_SAY_REQUEST:
-
       return {
         loading: true,
         say: [],
