@@ -26,17 +26,17 @@ const Bet_History = ({ history }) => {
 
   if (isAuthenticated === false) {
     history.push("/login");
-    alert.error("login to access...",{
-      position:"top-center",
-      autoClose:3000,
-      hideProgressBar:false,
-      newestOnTop:false,
-      closeOnClick:true,
-      rtl:false,
-      draggable:true,
-      pauseOnHover:true,
-      theme:"dark"
-    });
+    // alert.error("login to access...",{
+    //   position:"top-center",
+    //   autoClose:3000,
+    //   hideProgressBar:false,
+    //   newestOnTop:false,
+    //   closeOnClick:true,
+    //   rtl:false,
+    //   draggable:true,
+    //   pauseOnHover:true,
+    //   theme:"dark"
+    // });
   }
 
 

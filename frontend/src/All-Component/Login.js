@@ -41,11 +41,7 @@ function Login ({history}) {
     if(error){
       dispatch(clearErrors());
     }
-    if(isAuthenticated){
-      history.push("/dashboard");
-     
-    }
-    
+
   }, [dispatch, error, alert, history, isAuthenticated]) 
   
 
@@ -65,6 +61,8 @@ function Login ({history}) {
         pauseOnHover:true,
         theme:"dark"
       });
+
+      history.push("/dashboard");
      
     }
     if(error){
