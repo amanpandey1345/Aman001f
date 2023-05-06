@@ -41,6 +41,11 @@ function Login ({history}) {
     if(error){
       dispatch(clearErrors());
     }
+    if(isAuthenticated){
+
+      history.push("/dashboard");
+     
+    }
 
   }, [dispatch, error, alert, history, isAuthenticated]) 
   
