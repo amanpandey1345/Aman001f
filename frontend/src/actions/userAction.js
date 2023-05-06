@@ -96,7 +96,9 @@ import {
 } from "../constants/userConstants";
 
 import axios from "axios";
-const baseUrl = "https://newly001.onrender.com"
+const baseUrl = "https://newly001.onrender.com"   
+
+
 
 export const login = (email, password) => async (dispatch) => {
   try {
